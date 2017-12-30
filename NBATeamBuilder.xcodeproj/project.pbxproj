@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		564E183C1FF5C831004758F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E183B1FF5C831004758F5 /* AppDelegate.swift */; };
-		564E183E1FF5C831004758F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E183D1FF5C831004758F5 /* ViewController.swift */; };
+		564E183E1FF5C831004758F5 /* TeamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E183D1FF5C831004758F5 /* TeamsController.swift */; };
 		564E18411FF5C831004758F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E183F1FF5C831004758F5 /* Main.storyboard */; };
 		564E18431FF5C831004758F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 564E18421FF5C831004758F5 /* Assets.xcassets */; };
 		564E18461FF5C831004758F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E18441FF5C831004758F5 /* LaunchScreen.storyboard */; };
+		564E186C1FF5D5DD004758F5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E186B1FF5D5DD004758F5 /* Extensions.swift */; };
+		564E186E1FF5D915004758F5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E186D1FF5D915004758F5 /* Team.swift */; };
+		56D9868A1FF5DC690044A1E5 /* CreateTeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D986891FF5DC690044A1E5 /* CreateTeamController.swift */; };
+		56D9868D1FF765E00044A1E5 /* TeamModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D9868B1FF765E00044A1E5 /* TeamModels.xcdatamodeld */; };
+		56D9868F1FF825940044A1E5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9868E1FF825940044A1E5 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		564E18381FF5C831004758F5 /* NBATeamBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBATeamBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		564E183B1FF5C831004758F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		564E183D1FF5C831004758F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		564E183D1FF5C831004758F5 /* TeamsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsController.swift; sourceTree = "<group>"; };
 		564E18401FF5C831004758F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		564E18421FF5C831004758F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		564E18451FF5C831004758F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		564E18471FF5C831004758F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		564E186B1FF5D5DD004758F5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		564E186D1FF5D915004758F5 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		56D986891FF5DC690044A1E5 /* CreateTeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamController.swift; sourceTree = "<group>"; };
+		56D9868C1FF765E00044A1E5 /* TeamModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamModels.xcdatamodel; sourceTree = "<group>"; };
+		56D9868E1FF825940044A1E5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +65,34 @@
 			isa = PBXGroup;
 			children = (
 				564E183B1FF5C831004758F5 /* AppDelegate.swift */,
-				564E183D1FF5C831004758F5 /* ViewController.swift */,
+				564E186F1FF5D93F004758F5 /* Model */,
+				564E18701FF5D944004758F5 /* Controller */,
+				56D9868E1FF825940044A1E5 /* CoreDataManager.swift */,
+				564E186B1FF5D5DD004758F5 /* Extensions.swift */,
 				564E183F1FF5C831004758F5 /* Main.storyboard */,
 				564E18421FF5C831004758F5 /* Assets.xcassets */,
 				564E18441FF5C831004758F5 /* LaunchScreen.storyboard */,
 				564E18471FF5C831004758F5 /* Info.plist */,
+				56D9868B1FF765E00044A1E5 /* TeamModels.xcdatamodeld */,
 			);
 			path = NBATeamBuilder;
+			sourceTree = "<group>";
+		};
+		564E186F1FF5D93F004758F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				564E186D1FF5D915004758F5 /* Team.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		564E18701FF5D944004758F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				564E183D1FF5C831004758F5 /* TeamsController.swift */,
+				56D986891FF5DC690044A1E5 /* CreateTeamController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				564E183E1FF5C831004758F5 /* ViewController.swift in Sources */,
+				564E186E1FF5D915004758F5 /* Team.swift in Sources */,
+				564E183E1FF5C831004758F5 /* TeamsController.swift in Sources */,
+				56D9868D1FF765E00044A1E5 /* TeamModels.xcdatamodeld in Sources */,
+				564E186C1FF5D5DD004758F5 /* Extensions.swift in Sources */,
 				564E183C1FF5C831004758F5 /* AppDelegate.swift in Sources */,
+				56D9868F1FF825940044A1E5 /* CoreDataManager.swift in Sources */,
+				56D9868A1FF5DC690044A1E5 /* CreateTeamController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		56D9868B1FF765E00044A1E5 /* TeamModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				56D9868C1FF765E00044A1E5 /* TeamModels.xcdatamodel */,
+			);
+			currentVersion = 56D9868C1FF765E00044A1E5 /* TeamModels.xcdatamodel */;
+			path = TeamModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 564E18301FF5C831004758F5 /* Project object */;
 }
