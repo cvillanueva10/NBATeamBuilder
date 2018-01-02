@@ -51,7 +51,7 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         return picker
     }()
     
-    var foundedYear = "1947" // default year
+    var foundedYearString = "1947" // default year
     let foundedPickerData = Array(1947...2018)
     
     var team: Team? {
@@ -79,8 +79,10 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         // ternary syntax (same as if / else)
         navigationItem.title = team == nil ? "Create Team" : "Edit Team"
-        
-        
+        if let foundedYearInt = Int(foundedYearString){
+            let selectedIndex = foundedYearInt - 1947
+            foundedPicker.selectRow(selectedIndex, inComponent: 0, animated: true)
+        }
     }
     
     // Set up our UI components using auto layout constraints
@@ -129,7 +131,6 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         } else {
             saveTeamChanges()
         }
-        
     }
     
     private func createTeam(){
@@ -138,7 +139,7 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         let team = NSEntityDescription.insertNewObject(forEntityName: "Team", into: context)
         team.setValue(nameTextField.text, forKey: "name")
-        team.setValue(foundedYear, forKey: "founded")
+        team.setValue(foundedYearString, forKey: "founded")
         
         // Save team object
         do {
@@ -154,7 +155,7 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
     private func saveTeamChanges(){
         let context = CoreDataManager.shared.persistentContainer.viewContext
         team?.name = nameTextField.text
-        team?.founded = foundedYear
+        team?.founded = foundedYearString
         
         do {
             try context.save()
@@ -187,7 +188,7 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        foundedYear = "\(foundedPickerData[row])"
+        foundedYearString = "\(foundedPickerData[row])"
     }
     // -------
     

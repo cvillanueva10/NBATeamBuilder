@@ -49,9 +49,6 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
         let fetchRequest = NSFetchRequest<Team>(entityName: "Team")
         do {
             let teams = try context.fetch(fetchRequest)
-            teams.forEach({ (team) in
-                print(team.name ?? "")
-            })
             self.teams = teams
             self.tableView.reloadData()
         } catch let fetchError {
@@ -147,6 +144,10 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
         let editTeamController = CreateTeamController()
         editTeamController.delegate = self
         editTeamController.team = teams[indexPath.row]
+        if let foundedYearString = teams[indexPath.row].founded{
+            editTeamController.foundedYearString = foundedYearString
+        }
+        
         let navigationController = CustomNavigationController(rootViewController: editTeamController)
         present(navigationController, animated: true, completion: nil)
     }
