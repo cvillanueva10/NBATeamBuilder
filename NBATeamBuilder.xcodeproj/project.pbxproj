@@ -14,6 +14,14 @@
 		564E18461FF5C831004758F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E18441FF5C831004758F5 /* LaunchScreen.storyboard */; };
 		564E186C1FF5D5DD004758F5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E186B1FF5D5DD004758F5 /* Extensions.swift */; };
 		564E186E1FF5D915004758F5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E186D1FF5D915004758F5 /* Team.swift */; };
+		565D92BE1FFC9FB100804F37 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92BD1FFC9FB100804F37 /* TeamCell.swift */; };
+		565D92C21FFCA75300804F37 /* TeamsController+CreateEditTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92C11FFCA75300804F37 /* TeamsController+CreateEditTeam.swift */; };
+		565D92C41FFCA83600804F37 /* TeamsController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92C31FFCA83600804F37 /* TeamsController+UITableView.swift */; };
+		565D92C61FFCAB4F00804F37 /* TeamsController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92C51FFCAB4F00804F37 /* TeamsController+NavigationBar.swift */; };
+		565D92C81FFCAC4F00804F37 /* CreateTeamController+FoundedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92C71FFCAC4F00804F37 /* CreateTeamController+FoundedPicker.swift */; };
+		565D92CC1FFCAE4900804F37 /* CreateTeamController+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92CB1FFCAE4900804F37 /* CreateTeamController+ImageView.swift */; };
+		565D92CF1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92CE1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift */; };
+		565D92D31FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92D21FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift */; };
 		56D9868A1FF5DC690044A1E5 /* CreateTeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D986891FF5DC690044A1E5 /* CreateTeamController.swift */; };
 		56D9868D1FF765E00044A1E5 /* TeamModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D9868B1FF765E00044A1E5 /* TeamModels.xcdatamodeld */; };
 		56D9868F1FF825940044A1E5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9868E1FF825940044A1E5 /* CoreDataManager.swift */; };
@@ -29,6 +37,14 @@
 		564E18471FF5C831004758F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		564E186B1FF5D5DD004758F5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		564E186D1FF5D915004758F5 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		565D92BD1FFC9FB100804F37 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		565D92C11FFCA75300804F37 /* TeamsController+CreateEditTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamsController+CreateEditTeam.swift"; sourceTree = "<group>"; };
+		565D92C31FFCA83600804F37 /* TeamsController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamsController+UITableView.swift"; sourceTree = "<group>"; };
+		565D92C51FFCAB4F00804F37 /* TeamsController+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamsController+NavigationBar.swift"; sourceTree = "<group>"; };
+		565D92C71FFCAC4F00804F37 /* CreateTeamController+FoundedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+FoundedPicker.swift"; sourceTree = "<group>"; };
+		565D92CB1FFCAE4900804F37 /* CreateTeamController+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+ImageView.swift"; sourceTree = "<group>"; };
+		565D92CE1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+SaveEdit.swift"; sourceTree = "<group>"; };
+		565D92D21FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+SetupUI.swift"; sourceTree = "<group>"; };
 		56D986891FF5DC690044A1E5 /* CreateTeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamController.swift; sourceTree = "<group>"; };
 		56D9868C1FF765E00044A1E5 /* TeamModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamModels.xcdatamodel; sourceTree = "<group>"; };
 		56D9868E1FF825940044A1E5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -65,8 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				564E183B1FF5C831004758F5 /* AppDelegate.swift */,
-				564E186F1FF5D93F004758F5 /* Model */,
-				564E18701FF5D944004758F5 /* Controller */,
+				565D92C01FFCA0D500804F37 /* Teams */,
 				56D9868E1FF825940044A1E5 /* CoreDataManager.swift */,
 				564E186B1FF5D5DD004758F5 /* Extensions.swift */,
 				564E183F1FF5C831004758F5 /* Main.storyboard */,
@@ -89,10 +104,51 @@
 		564E18701FF5D944004758F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				564E183D1FF5C831004758F5 /* TeamsController.swift */,
-				56D986891FF5DC690044A1E5 /* CreateTeamController.swift */,
+				565D92D11FFCB02E00804F37 /* CreateTeamController */,
+				565D92D01FFCB01B00804F37 /* TeamsController */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		565D92BF1FFCA0A300804F37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				565D92BD1FFC9FB100804F37 /* TeamCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		565D92C01FFCA0D500804F37 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				564E186F1FF5D93F004758F5 /* Model */,
+				564E18701FF5D944004758F5 /* Controller */,
+				565D92BF1FFCA0A300804F37 /* View */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		565D92D01FFCB01B00804F37 /* TeamsController */ = {
+			isa = PBXGroup;
+			children = (
+				564E183D1FF5C831004758F5 /* TeamsController.swift */,
+				565D92C11FFCA75300804F37 /* TeamsController+CreateEditTeam.swift */,
+				565D92C31FFCA83600804F37 /* TeamsController+UITableView.swift */,
+				565D92C51FFCAB4F00804F37 /* TeamsController+NavigationBar.swift */,
+			);
+			path = TeamsController;
+			sourceTree = "<group>";
+		};
+		565D92D11FFCB02E00804F37 /* CreateTeamController */ = {
+			isa = PBXGroup;
+			children = (
+				56D986891FF5DC690044A1E5 /* CreateTeamController.swift */,
+				565D92C71FFCAC4F00804F37 /* CreateTeamController+FoundedPicker.swift */,
+				565D92CB1FFCAE4900804F37 /* CreateTeamController+ImageView.swift */,
+				565D92CE1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift */,
+				565D92D21FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift */,
+			);
+			path = CreateTeamController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,13 +223,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565D92BE1FFC9FB100804F37 /* TeamCell.swift in Sources */,
+				565D92C61FFCAB4F00804F37 /* TeamsController+NavigationBar.swift in Sources */,
+				565D92D31FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift in Sources */,
 				564E186E1FF5D915004758F5 /* Team.swift in Sources */,
 				564E183E1FF5C831004758F5 /* TeamsController.swift in Sources */,
+				565D92C81FFCAC4F00804F37 /* CreateTeamController+FoundedPicker.swift in Sources */,
+				565D92C21FFCA75300804F37 /* TeamsController+CreateEditTeam.swift in Sources */,
 				56D9868D1FF765E00044A1E5 /* TeamModels.xcdatamodeld in Sources */,
 				564E186C1FF5D5DD004758F5 /* Extensions.swift in Sources */,
 				564E183C1FF5C831004758F5 /* AppDelegate.swift in Sources */,
 				56D9868F1FF825940044A1E5 /* CoreDataManager.swift in Sources */,
+				565D92CC1FFCAE4900804F37 /* CreateTeamController+ImageView.swift in Sources */,
+				565D92C41FFCA83600804F37 /* TeamsController+UITableView.swift in Sources */,
 				56D9868A1FF5DC690044A1E5 /* CreateTeamController.swift in Sources */,
+				565D92CF1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

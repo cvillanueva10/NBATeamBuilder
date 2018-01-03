@@ -21,6 +21,20 @@ struct CoreDataManager {
             }
         }
         return container
-    }() 
+    }()
     
+    func fetchTeams() -> [Team] {
+        let context = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Team>(entityName: "Team")
+        do {
+            let teams = try context.fetch(fetchRequest)
+            return teams
+        } catch let fetchError {
+            print("Failed to fetch teams: ", fetchError)
+            return []
+        }
+    }
 }
+
+
+
