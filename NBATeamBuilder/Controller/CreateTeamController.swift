@@ -15,13 +15,22 @@ protocol CreateTeamControllerDelegate {
     func didEditTeam(team: Team)
 }
 
-class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    lazy var teamImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectPhoto)))
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     let nameLabel: UILabel = {
@@ -57,7 +66,11 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
     var team: Team? {
         didSet {
             nameTextField.text = team?.name
-
+            
+            if let imageData = team?.imageData {
+                teamImageView.image = UIImage(data: imageData)
+                setupCircularImageStyle()
+            }
         }
     }
     
@@ -79,6 +92,9 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         // ternary syntax (same as if / else)
         navigationItem.title = team == nil ? "Create Team" : "Edit Team"
+        
+        // this handles setting the picker properly
+        // when editing a team
         if let foundedYearInt = Int(foundedYearString){
             let selectedIndex = foundedYearInt - 1947
             foundedPicker.selectRow(selectedIndex, inComponent: 0, animated: true)
@@ -91,10 +107,16 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         backgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         backgroundView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        backgroundView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        backgroundView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        view.addSubview(teamImageView)
+        teamImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        teamImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        teamImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        teamImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         view.addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: teamImageView.bottomAnchor).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -123,6 +145,36 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.foundedPicker.dataSource = self
     }
     
+    @objc private func handleSelectPhoto(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            teamImageView.image = editedImage
+        }
+        else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            teamImageView.image = originalImage
+        }
+        setupCircularImageStyle()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func setupCircularImageStyle() {
+        teamImageView.layer.cornerRadius = teamImageView.frame.width / 2
+        teamImageView.layer.masksToBounds = true
+        teamImageView.layer.borderColor = UIColor.black.cgColor
+        teamImageView.layer.borderWidth = 2
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // Dismiss current controller and add team
     // to TeamsController tableView and save to Core Data
     @objc private func handleSave() {
@@ -141,6 +193,11 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         team.setValue(nameTextField.text, forKey: "name")
         team.setValue(foundedYearString, forKey: "founded")
         
+        if let teamImage = teamImageView.image {
+            let imageData = UIImageJPEGRepresentation(teamImage, 0.8)
+            team.setValue(imageData, forKey: "imageData")
+        }
+       
         // Save team object
         do {
             try context.save()
@@ -156,6 +213,11 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         let context = CoreDataManager.shared.persistentContainer.viewContext
         team?.name = nameTextField.text
         team?.founded = foundedYearString
+        
+        if let teamImage = teamImageView.image {
+            let imageData = UIImageJPEGRepresentation(teamImage, 0.8)
+            team?.imageData = imageData
+        }
         
         do {
             try context.save()

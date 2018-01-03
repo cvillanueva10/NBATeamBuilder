@@ -37,6 +37,8 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
         fetchTeams()
         
         navigationItem.title = "Basketball  Teams"
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddTeam))
         
         setupTableView()
@@ -52,7 +54,7 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
             self.teams = teams
             self.tableView.reloadData()
         } catch let fetchError {
-            print("Failed to fetch teams:", fetchError)
+            print("Failed to fetch teams: ", fetchError)
         }
     }
     
@@ -63,6 +65,32 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
         createTeamController.delegate = self
         let navigationController = CustomNavigationController(rootViewController: createTeamController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    // Delete all teams
+    @objc private func handleReset() {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Team.fetchRequest())
+        do {
+            try context.execute(batchDeleteRequest)
+        
+            var indexPathsToRemove = [IndexPath]()
+            
+            for (index, _) in teams.enumerated() {
+                let indexPath = IndexPath(row: index, section: 0)
+                indexPathsToRemove.append(indexPath)
+            }
+            teams.removeAll()
+            tableView.deleteRows(at: indexPathsToRemove, with: .left)
+            
+            
+//            teams.removeAll()
+//            tableView.reloadData()
+            
+        } catch let deleteError {
+            print("Failed to delete objects from Core Data: ", deleteError)
+        }
+      
     }
    
     // Compose and style our TableView
@@ -97,11 +125,6 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
         
         let team = teams[indexPath.item]
         
-//        if let name = team.name{
-//            cell.textLabel?.text = "\(name) - Founded: \(founded)"
-//        } else {
-//            cell.textLabel?.text = team.name
-//        }
         if let name = team.name, let founded = team.founded {
               cell.textLabel?.text = "\(name) - Founded: \(founded)"
         } else {
@@ -110,6 +133,11 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
       
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        if let imageData = team.imageData {
+            cell.imageView?.image = UIImage(data: imageData)
+        }
+        
         return cell
     }
     
@@ -150,6 +178,20 @@ class TeamsController: UITableViewController, CreateTeamControllerDelegate {
         
         let navigationController = CustomNavigationController(rootViewController: editTeamController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    // Fooer functions
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "No teams available..."
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return teams.count == 0 ? 150 : 0
     }
     
     // -----
