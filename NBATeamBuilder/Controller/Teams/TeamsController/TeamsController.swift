@@ -21,9 +21,9 @@ class TeamsController: UITableViewController {
         setupNavigationItems()
     }
     private func setupNavigationItems() {
-        navigationItem.title = "Basketball  Teams"
+        navigationItem.title = "Teams"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddTeam))
+        setupPlusButtoninNavBar(selector: #selector(handleAddTeam))
     }
 }
 

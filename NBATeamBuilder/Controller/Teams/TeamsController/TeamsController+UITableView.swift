@@ -54,6 +54,13 @@ extension TeamsController {
         return [deleteAction, editAction]
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let team = self.teams[indexPath.row]
+        let playersController = PlayersController()
+        playersController.team = team 
+        navigationController?.pushViewController(playersController, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }

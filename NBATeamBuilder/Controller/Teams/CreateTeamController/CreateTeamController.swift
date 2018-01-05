@@ -15,14 +15,7 @@ protocol CreateTeamControllerDelegate {
     func didEditTeam(team: Team)
 }
 
-class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
-    let backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightBlue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{ 
     
     lazy var teamImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
@@ -80,8 +73,10 @@ class CreateTeamController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.viewDidLoad()
         
         view.backgroundColor = .darkBlue
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+ 
+        // helper functions
+        setupCancelButtonInNavBar()
+        setupSaveButtonInNavBar(selector: #selector(handleSave ))
         
         setupUI()
         initializePicker()

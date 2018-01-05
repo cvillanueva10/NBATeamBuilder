@@ -22,6 +22,9 @@
 		565D92CC1FFCAE4900804F37 /* CreateTeamController+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92CB1FFCAE4900804F37 /* CreateTeamController+ImageView.swift */; };
 		565D92CF1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92CE1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift */; };
 		565D92D31FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92D21FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift */; };
+		565D92D51FFF2F4300804F37 /* PlayersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92D41FFF2F4300804F37 /* PlayersController.swift */; };
+		565D92D91FFF31E500804F37 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92D81FFF31E500804F37 /* UIViewController+Helpers.swift */; };
+		565D92DB1FFF32B100804F37 /* CreatePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D92DA1FFF32B100804F37 /* CreatePlayerController.swift */; };
 		56D9868A1FF5DC690044A1E5 /* CreateTeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D986891FF5DC690044A1E5 /* CreateTeamController.swift */; };
 		56D9868D1FF765E00044A1E5 /* TeamModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D9868B1FF765E00044A1E5 /* TeamModels.xcdatamodeld */; };
 		56D9868F1FF825940044A1E5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9868E1FF825940044A1E5 /* CoreDataManager.swift */; };
@@ -45,6 +48,9 @@
 		565D92CB1FFCAE4900804F37 /* CreateTeamController+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+ImageView.swift"; sourceTree = "<group>"; };
 		565D92CE1FFCAF8200804F37 /* CreateTeamController+SaveEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+SaveEdit.swift"; sourceTree = "<group>"; };
 		565D92D21FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateTeamController+SetupUI.swift"; sourceTree = "<group>"; };
+		565D92D41FFF2F4300804F37 /* PlayersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersController.swift; sourceTree = "<group>"; };
+		565D92D81FFF31E500804F37 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
+		565D92DA1FFF32B100804F37 /* CreatePlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerController.swift; sourceTree = "<group>"; };
 		56D986891FF5DC690044A1E5 /* CreateTeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamController.swift; sourceTree = "<group>"; };
 		56D9868C1FF765E00044A1E5 /* TeamModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamModels.xcdatamodel; sourceTree = "<group>"; };
 		56D9868E1FF825940044A1E5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -81,7 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				564E183B1FF5C831004758F5 /* AppDelegate.swift */,
-				565D92C01FFCA0D500804F37 /* Teams */,
+				565D92D71FFF31DB00804F37 /* Helpers */,
+				564E186F1FF5D93F004758F5 /* Model */,
+				564E18701FF5D944004758F5 /* Controller */,
+				565D92BF1FFCA0A300804F37 /* View */,
 				56D9868E1FF825940044A1E5 /* CoreDataManager.swift */,
 				564E186B1FF5D5DD004758F5 /* Extensions.swift */,
 				564E183F1FF5C831004758F5 /* Main.storyboard */,
@@ -104,8 +113,8 @@
 		564E18701FF5D944004758F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				565D92D11FFCB02E00804F37 /* CreateTeamController */,
-				565D92D01FFCB01B00804F37 /* TeamsController */,
+				565D92D61FFF312500804F37 /* Players */,
+				565D92C01FFCA0D500804F37 /* Teams */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,9 +130,8 @@
 		565D92C01FFCA0D500804F37 /* Teams */ = {
 			isa = PBXGroup;
 			children = (
-				564E186F1FF5D93F004758F5 /* Model */,
-				564E18701FF5D944004758F5 /* Controller */,
-				565D92BF1FFCA0A300804F37 /* View */,
+				565D92D01FFCB01B00804F37 /* TeamsController */,
+				565D92D11FFCB02E00804F37 /* CreateTeamController */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -149,6 +157,23 @@
 				565D92D21FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift */,
 			);
 			path = CreateTeamController;
+			sourceTree = "<group>";
+		};
+		565D92D61FFF312500804F37 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				565D92D41FFF2F4300804F37 /* PlayersController.swift */,
+				565D92DA1FFF32B100804F37 /* CreatePlayerController.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		565D92D71FFF31DB00804F37 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				565D92D81FFF31E500804F37 /* UIViewController+Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +248,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565D92DB1FFF32B100804F37 /* CreatePlayerController.swift in Sources */,
 				565D92BE1FFC9FB100804F37 /* TeamCell.swift in Sources */,
 				565D92C61FFCAB4F00804F37 /* TeamsController+NavigationBar.swift in Sources */,
+				565D92D51FFF2F4300804F37 /* PlayersController.swift in Sources */,
 				565D92D31FFCB0AC00804F37 /* CreateTeamController+SetupUI.swift in Sources */,
 				564E186E1FF5D915004758F5 /* Team.swift in Sources */,
 				564E183E1FF5C831004758F5 /* TeamsController.swift in Sources */,
@@ -232,6 +259,7 @@
 				565D92C21FFCA75300804F37 /* TeamsController+CreateEditTeam.swift in Sources */,
 				56D9868D1FF765E00044A1E5 /* TeamModels.xcdatamodeld in Sources */,
 				564E186C1FF5D5DD004758F5 /* Extensions.swift in Sources */,
+				565D92D91FFF31E500804F37 /* UIViewController+Helpers.swift in Sources */,
 				564E183C1FF5C831004758F5 /* AppDelegate.swift in Sources */,
 				56D9868F1FF825940044A1E5 /* CoreDataManager.swift in Sources */,
 				565D92CC1FFCAE4900804F37 /* CreateTeamController+ImageView.swift in Sources */,

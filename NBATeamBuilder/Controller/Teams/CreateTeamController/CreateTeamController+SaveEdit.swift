@@ -63,8 +63,4 @@ extension CreateTeamController {
             print("Error updating team: ", saveError)
         }
     }
-    
-    @objc func handleCancel(){
-        dismiss(animated: true, completion: nil)
-    }
 }

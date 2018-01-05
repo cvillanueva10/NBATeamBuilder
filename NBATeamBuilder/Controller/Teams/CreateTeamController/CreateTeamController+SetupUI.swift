@@ -12,11 +12,8 @@ extension CreateTeamController {
     
     // Set up our UI components using auto layout constraints
     func setupUI(){
-        view.addSubview(backgroundView)
-        backgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        backgroundView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        backgroundView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        backgroundView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        setupLightBlueBackgroundView(height: 250)
         
         view.addSubview(teamImageView)
         teamImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
