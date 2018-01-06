@@ -2,14 +2,35 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="playerBuild" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerBuild" inverseName="player" inverseEntity="PlayerBuild" syncable="YES"/>
+        <relationship name="playerInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="player" inverseEntity="PlayerInfo" syncable="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="players" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="PlayerBuild" representedClassName="PlayerBuild" syncable="YES" codeGenerationType="class">
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="primary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tertiary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="playerBuild" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="PlayerInfo" representedClassName="PlayerInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="currentSalary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="draftPick" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="draftYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="impact" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="playerInfo" inverseEntity="Player" syncable="YES"/>
     </entity>
     <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
         <attribute name="founded" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Team" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Player" positionX="-63" positionY="9" width="128" height="60"/>
+        <element name="Team" positionX="-450" positionY="-103" width="128" height="103"/>
+        <element name="Player" positionX="-279" positionY="32" width="128" height="103"/>
+        <element name="PlayerInfo" positionX="-45" positionY="-81" width="128" height="133"/>
+        <element name="PlayerBuild" positionX="7" positionY="164" width="128" height="118"/>
     </elements>
 </model>

@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CreatePlayerControllerDelegate {
+    func didAddPlayer(player: Player)
+}
+
 class CreatePlayerController: UIViewController {
+    
+    var delegate: CreatePlayerControllerDelegate?
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -23,6 +29,8 @@ class CreatePlayerController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    var team: Team?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +47,19 @@ class CreatePlayerController: UIViewController {
     @objc private func handleSave(){
         
         guard let playerName = nameTextField.text else { return }
-        let error = CoreDataManager.shared.createPlayer(playerName: playerName)
+        guard let team = self.team else { return }
+        let tuple = CoreDataManager.shared.createPlayer(playerName: playerName, team: team)
         
-        if let error = error {
+        if let error = tuple.1 {
              // present error using something
             print(error)
         } else {
-             dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: {
+            // call delegate
+            guard let player = tuple.0 else {return}
+            self.delegate?.didAddPlayer(player: player)
+            })
         }
-       
     }
     
     func setupUI(){
