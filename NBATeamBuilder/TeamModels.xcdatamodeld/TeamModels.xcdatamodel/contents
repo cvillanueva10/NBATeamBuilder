@@ -7,6 +7,7 @@
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="players" inverseEntity="Team" syncable="YES"/>
     </entity>
     <entity name="PlayerBuild" representedClassName="PlayerBuild" syncable="YES" codeGenerationType="class">
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="primary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="secondary" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,9 +29,9 @@
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Team" positionX="-450" positionY="-103" width="128" height="103"/>
         <element name="Player" positionX="-279" positionY="32" width="128" height="103"/>
+        <element name="PlayerBuild" positionX="7" positionY="164" width="128" height="133"/>
         <element name="PlayerInfo" positionX="-45" positionY="-81" width="128" height="133"/>
-        <element name="PlayerBuild" positionX="7" positionY="164" width="128" height="118"/>
+        <element name="Team" positionX="-450" positionY="-103" width="128" height="103"/>
     </elements>
 </model>

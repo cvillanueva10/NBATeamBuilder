@@ -35,7 +35,7 @@ struct CoreDataManager {
         }
     }
     
-    func createPlayer(playerName: String, team: Team) -> (Player?, Error?) {
+    func createPlayer(playerName: String, position: String, age: Int16, team: Team) -> (Player?, Error?) {
         let context = persistentContainer.viewContext
         
         //create player
@@ -44,10 +44,13 @@ struct CoreDataManager {
         player.team = team
         
         let playerBuild = NSEntityDescription.insertNewObject(forEntityName: "PlayerBuild", into: context) as! PlayerBuild
+        let playerInfo = NSEntityDescription.insertNewObject(forEntityName: "PlayerInfo", into: context) as! PlayerInfo
         
-        playerBuild.position = "PG"
-        
+        playerBuild.position = position
         player.playerBuild = playerBuild
+        
+        playerInfo.age = age
+        player.playerInfo = playerInfo
         
         do {
             try context.save()
