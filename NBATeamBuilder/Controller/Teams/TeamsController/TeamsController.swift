@@ -23,6 +23,10 @@ class TeamsController: UITableViewController {
     private func setupNavigationItems() {
         navigationItem.title = "Teams"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset)),
+            UIBarButtonItem(title: "Nested Updates", style: .plain, target: self, action: #selector(handleNestedUpdates))
+        ]
         setupPlusButtoninNavBar(selector: #selector(handleAddTeam))
     }
 }

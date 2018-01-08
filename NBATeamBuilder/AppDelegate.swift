@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Apperance proxy to allow all navigation bars to style the same way
@@ -36,12 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 24)]
         
         // Initialize and display app window progamatically without story board
         window = UIWindow()
         window?.makeKeyAndVisible()
-        let teamsController = TeamsController()
+        let teamsController = TeamsAutoUpdateController()
         let navigationController = CustomNavigationController(rootViewController: teamsController)
         window?.rootViewController = navigationController
         
